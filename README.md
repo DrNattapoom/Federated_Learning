@@ -76,7 +76,9 @@ Now, if we look at the <code>client.py</code>, we can see that although the func
 It is clear that the function <code>train()</code> plays a major role in the performance aspect. Therefore, it would be safe to say that this function <code>train()</code> is a performance bottleneck of the federated learning algorithm, or at least for this particular implementation.
 
 ## So, what could be improved?
-Since the function <code>train()</code> contains multiple similar instructions, one of the possible solutions could be parallelizing the function <code>train()</code> and then run it on GPU instead.
+Firstly, as suggested by the histogram, more logical CPUs should be utilized, and this can be done by further parallelize the algorithm and distribute tasks to unused ones. 
+<br><br>
+Also, since the function <code>train()</code> contains multiple similar instructions, one of the possible solutions could be parallelizing the function <code>train()</code> and then run it on GPU instead.
 <br><br>
 In fact, this has been done by one of my classmates, Mr. Bhumrapee Soonjun. He applies CUDA and runs the algorithm on the GPU. 
 
