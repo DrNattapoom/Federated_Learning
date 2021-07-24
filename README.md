@@ -41,5 +41,10 @@ Python Verison: Python 3.8.10
 
 NOTE: Number of Logical CPUs = Number of Physical Processor x Number of Threads = 8 Logical CPUs
 ```
+server.py
+
+
+client.py
 ![Screenshot from 2021-07-24 12-24-33](https://user-images.githubusercontent.com/60769071/126858548-736427c7-bffe-4358-828f-7048bc963c38.png)
+![Screenshot from 2021-07-24 13-07-29](https://user-images.githubusercontent.com/60769071/126859253-81f2faed-b558-4579-8e14-09d48ee0c08e.png)
 
