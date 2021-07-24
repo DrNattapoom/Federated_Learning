@@ -34,8 +34,12 @@ Package Requirements
 # Code analysis
 <b> System Information </b>
 ```
-CPU: 11th Gen Intel® Core™ i7-1165G7 @ 2.80GHz, 4 Cores 8 Threads.
+CPU: 11th Gen Intel® Core™ i7-1165G7 @ 2.80GHz, 4 Cores 8 Threads. 1 Physical Processor
 RAM: 16 GB
 OS: UBUNTU 20.04.2 LTS
 Python Verison: Python 3.8.10
+
+NOTE: Number of Logical CPUs = Number of Physical Processor x Number of Threads = 8 Logical CPUs
 ```
+![Screenshot from 2021-07-24 12-24-33](https://user-images.githubusercontent.com/60769071/126858548-736427c7-bffe-4358-828f-7048bc963c38.png)
+
