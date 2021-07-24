@@ -73,7 +73,7 @@ Now, if we look at the <code>client.py</code>, we can see that although the func
 ![Screenshot from 2021-07-24 22-41-50](https://user-images.githubusercontent.com/60769071/126873712-f1d9cad9-3b6d-438a-a576-77db9b6b9544.png)
 ![Screenshot from 2021-07-24 22-38-10](https://user-images.githubusercontent.com/60769071/126873596-5f79bc1a-f125-4edf-b636-973b55f51787.png)
 
-All in all, it is clear that the function <code>train()</code> plays a major role in the performance aspect. Therefore, it would be safe to say that this function <code>train()</code> is a performance bottleneck of the federated learning algorithm, or at least for this particular implementation.
+It is clear that the function <code>train()</code> plays a major role in the performance aspect. Therefore, it would be safe to say that this function <code>train()</code> is a performance bottleneck of the federated learning algorithm, or at least for this particular implementation.
 
 ## So, what could be improved?
 Since the function <code>train()</code> contains multiple similar instructions, one of the possible solutions could be parallelizing the function <code>train()</code> and then run it on GPU instead.
@@ -84,3 +84,7 @@ In fact, this has been done by one of my classmates, Mr. Bhumrapee Soonjun. He a
 According to Bhumrapee Soonjun (2021), with the same algorithm running on GPU, the elapsed time of the <code>client.py</code> is roughly 36 seconds. This is very impressive considering the CPU implementation spent 191.555 seconds, which is approximately 6 times slower.
 
 All in all, the process of training the data should be done on GPU; however, it is also very crucial to make sure that we only trigger the GPU kernel when we needed to. By minimizing the number of function calls and data transfers, the algorithm can therefore be potentially faster. 
+
+# References
+<a href = "https://arxiv.org/pdf/1908.07873.pdf"> Federated learning: Challenges, methods, and future directions </a> <br>
+<a href = "https://flower.dev/docs/quickstart_pytorch.html"> Flower: A Friendly Federated Learning Framework </a>
