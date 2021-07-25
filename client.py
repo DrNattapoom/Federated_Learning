@@ -50,7 +50,7 @@ def main():
 
         def fit(self, parameters, config):
             self.set_parameters(parameters)
-            train(net, trainloader, epochs=1)
+            train(net, trainloader, epochs = 1)
             return self.get_parameters(), len(trainloader), {}
 
         def evaluate(self, parameters, config):
@@ -64,7 +64,7 @@ def main():
 def train(net, trainloader, epochs):
     """Train the network on the training set."""
     criterion = torch.nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+    optimizer = torch.optim.SGD(net.parameters(), lr = 0.001, momentum = 0.9)
     net.train()
     for _ in range(epochs):
         for images, labels in trainloader:
@@ -95,13 +95,13 @@ def load_data():
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
     )
-    # if relative path does not work, try using absolute path
-    # Using relative path may raise an error (PermissionError: [Errno 13] Permission denied: './dataset')
+    # if relative path does not work, try absolute path
+    # using relative path may raise PermissionError: [Errno 13] Permission denied: './dataset'
     path = "./dataset"
-    trainset = CIFAR10(path, train=True, download=True, transform=transform)
-    testset = CIFAR10(path, train=False, download=True, transform=transform)
-    trainloader = DataLoader(trainset, batch_size=32, shuffle=True)
-    testloader = DataLoader(testset, batch_size=32)
+    trainset = CIFAR10(path, train = True, download = True, transform = transform)
+    testset = CIFAR10(path, train = False, download = True, transform = transform)
+    trainloader = DataLoader(trainset, batch_size = 32, shuffle = True)
+    testloader = DataLoader(testset, batch_size = 32)
     return trainloader, testloader
 
 if __name__ == "__main__":
