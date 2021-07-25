@@ -36,7 +36,7 @@ def main():
 
     # Load model
     net = Net().to(DEVICE)
-    # Load data [CIFAR10 - a popular colored image classification dataset for machine learning]
+    # Load data
     trainloader, testloader = load_data()
 
     # Flower client
@@ -112,12 +112,13 @@ def load_data():
     # using relative path may raise PermissionError: [Errno 13] Permission denied: './dataset'
     # if relative path does not work, use absolute path
     path = "./dataset"
+    # CIFAR10 - a popular colored image classification dataset for machine learning
     trainset = CIFAR10(path, train = True, download = True, transform = transform)
     testset = CIFAR10(path, train = False, download = True, transform = transform)
+    # downloads the training and test data that are then normalized
     trainloader = DataLoader(trainset, batch_size = 32, shuffle = True)
     testloader = DataLoader(testset, batch_size = 32)
     return trainloader, testloader
 
 if __name__ == "__main__":
     main()
-    
