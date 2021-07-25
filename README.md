@@ -12,6 +12,7 @@
 # play around with parameters, exploring federated learning
 - play_around.zip
 ```
+
 # What I have learned ...
 ### 1. The Concept of Fedreated Learning:
    -  A machine learning approach where an algorithm is trained across multiple decentralized devices holding local datasets with exchanging the data samples.
@@ -53,6 +54,7 @@ Python Verison: Python 3.8.10
 
 NOTE: Number of Logical CPUs = Number of Physical Processor x Number of Threads = 8 Logical CPUs
 ```
+
 ## server.py
 <img src = "https://user-images.githubusercontent.com/60769071/126859458-d6abd2ae-6821-4183-94d1-e36367289612.png" width = "100%">
 <img src = "https://user-images.githubusercontent.com/60769071/126863250-8df115c7-8a55-4348-9d6d-f7767314c26b.png" width = "100%">
@@ -89,15 +91,14 @@ It is clear that the function <code>train()</code> plays a major role in the per
 
 ## So, what could be improved?
 Firstly, as suggested by the histogram, more logical CPUs should be utilized, and this could be done by further parallelizing the algorithm and distribute tasks to the unused ones. Also, since the function <code>train()</code> contains multiple similar instructions, one of the possible solutions could be parallelizing the function <code>train()</code> and then run it on GPU instead.
-<br><br>
+<br>
+<br>
 In fact, this has been done by one of my classmates, Mr. Bhumrapee Soonjun. He applies CUDA and runs the algorithm on the GPU. 
 
 ## Federated Learning Comparison: CPU vs GPU
 According to Bhumrapee Soonjun (2021), with the same algorithm running on GPU, the elapsed time of the <code>client.py</code> is roughly 36 seconds. And this is very impressive considering the CPU implementation spent 191.555 seconds, which is approximately 6 times slower. However, like the CPU implementation, his findings also hows that the paralleism of the algorithm is still "low". 
-
 <hr>
 All in all, the process of training the data should be further parallelized and run on GPU; however, it is also very crucial to make sure that we only trigger the GPU kernel when we needed to. By minimizing the number of function calls and data transfers, the algorithm can therefore be potentially faster. 
-<hr>
 
 # References
 <a href = "https://arxiv.org/pdf/1908.07873.pdf"> Federated learning: Challenges, methods, and future directions </a> <br>
