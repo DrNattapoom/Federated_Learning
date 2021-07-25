@@ -1,6 +1,15 @@
 # Federated Learning
 <b> MUIC ICCS311 Final Project: Federated Learning </b>
 
+# Repository Files
+```
+# python files for federated learning implementation
+- client.py
+- server.py
+# zipped files containing the matrices generating by Intel VTune Profiler
+- client_analysis.zip
+- server_analysis.zip
+```
 # What I have learned ...
 ### 1. The Concept of Fedreated Learning:
    -  A machine learning approach where an algorithm is trained across multiple decentralized devices holding local datasets with exchanging the data samples.
@@ -12,11 +21,12 @@
 ### 2. Federated Learning Implementation using PyTorch and Flower
    -  Train a Convolutional Neural Network on CIFAR10
    -  1 server, 2 clients with the same model
-   -  Logic: Using local datasets, each client produces weight updates for the model, which will then send to a server to aggregate and improve the model. And the improved model will then send back to each client.  
+   -  Logic: Using local datasets, each client produces weight updates for the model, which will then send to a server to aggregate and improve the model. And the improved model will then send back to each client. Repeat this process 3 times.
+   -  NOTE: If the local datasets do not exist, the datasets will be downloaded first.
 ```
 Project Setup
-   -  server.py
-   -  client.py
+   -  server.py # host the server
+   -  client.py # train the model
 ```
 ```
 Package Requirements
@@ -76,14 +86,14 @@ Now, if we look at the <code>client.py</code>, we can see that although the func
 It is clear that the function <code>train()</code> plays a major role in the performance aspect. Therefore, it would be safe to say that this function <code>train()</code> is a performance bottleneck of the federated learning algorithm, or at least for this particular implementation.
 
 ## So, what could be improved?
-Since the function <code>train()</code> contains multiple similar instructions, one of the possible solutions could be parallelizing the function <code>train()</code> and then run it on GPU instead.
+Firstly, as suggested by the histogram, more logical CPUs should be utilized, and this could be done by further parallelizing the algorithm and distribute tasks to the unused ones. Also, since the function <code>train()</code> contains multiple similar instructions, one of the possible solutions could be parallelizing the function <code>train()</code> and then run it on GPU instead.
 <br><br>
 In fact, this has been done by one of my classmates, Mr. Bhumrapee Soonjun. He applies CUDA and runs the algorithm on the GPU. 
 
 ## Federated Learning Comparison: CPU vs GPU
-According to Bhumrapee Soonjun (2021), with the same algorithm running on GPU, the elapsed time of the <code>client.py</code> is roughly 36 seconds. This is very impressive considering the CPU implementation spent 191.555 seconds, which is approximately 6 times slower.
-
-All in all, the process of training the data should be done on GPU; however, it is also very crucial to make sure that we only trigger the GPU kernel when we needed to. By minimizing the number of function calls and data transfers, the algorithm can therefore be potentially faster. 
+According to Bhumrapee Soonjun (2021), with the same algorithm running on GPU, the elapsed time of the <code>client.py</code> is roughly 36 seconds. And this is very impressive considering the CPU implementation spent 191.555 seconds, which is approximately 6 times slower. However, like the CPU implementation, his findings also hows that the paralleism of the algorithm is still "low". 
+<hr>
+All in all, the process of training the data should be further parallelized and run on GPU; however, it is also very crucial to make sure that we only trigger the GPU kernel when we needed to. By minimizing the number of function calls and data transfers, the algorithm can therefore be potentially faster. 
 
 # References
 <a href = "https://arxiv.org/pdf/1908.07873.pdf"> Federated learning: Challenges, methods, and future directions </a> <br>
