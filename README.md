@@ -15,7 +15,7 @@
 
 # What I have learned ...
 ### 1. The Concept of Fedreated Learning:
-   -  A machine learning approach where an algorithm is trained across multiple decentralized devices holding local datasets with exchanging the data samples.
+   -  A machine learning approach where an algorithm is trained across multiple decentralized devices holding local datasets without exchanging the data samples.
    -  Unlike traditional machine learning, the raw data is not aggregated to a centralized server; rather, it is left distributed on the client devices.
    -  Federated Learning Applications are used on ... 
       -  Internet of Things (IoT)
@@ -24,7 +24,7 @@
 ### 2. Federated Learning Implementation using PyTorch and Flower
    -  Train a Convolutional Neural Network on CIFAR10
    -  1 server, 2 clients with the same model
-   -  Logic: Using local datasets, each client produces weight updates for the model, which will then send to a server to aggregate and improve the model. And the improved model will then send back to each client. Repeat this process 3 times.
+   -  Logic: Using local datasets, each client produces weight updates for the model, which will then send to a server to aggregate and improve the model. And the improved model will then be sent back to each client. Repeat this process 3 times.
    -  NOTE: If the local datasets do not exist, the datasets will be downloaded first.
 ```
 Project Setup
@@ -77,7 +77,7 @@ Comparing the Effective CPU Utilization Histogram of the <code>client.py</code> 
 
 <img src = "https://user-images.githubusercontent.com/60769071/126859253-81f2faed-b558-4579-8e14-09d48ee0c08e.png" width = "100%">
 
-There are two functions call that take up most of the CPU time, which are <code>func@0x18c30</code> and <code>func@0x18ad0</code>. And unlike the funciton <code>sched_yeild</code> in <code>server.py</code>, the CPU time of these two functions are not a spin time; rather, they are an effective time. So, what are the tasks of these functions? To be honest, I'm not sure. However, an interesting thing is that if we trace back the call stack, we would find that both of these two functions are realted to the function <code>train()</code>. 
+There are two function calls that take up most of the CPU time, which are <code>func@0x18c30</code> and <code>func@0x18ad0</code>. And unlike the funciton <code>sched_yeild</code> in <code>server.py</code>, the CPU time of these two functions are not a spin time; rather, they are an effective time. So, what are the tasks of these functions? To be honest, I'm not sure. However, an interesting thing is that if we trace back the call stack, we would find that both of these two functions are related to the function <code>train()</code>.
 
 <img src = "https://user-images.githubusercontent.com/60769071/126873609-dc390d5c-2398-4d03-85d2-b49f8eb51677.png" width = "100%">
 <img src = "https://user-images.githubusercontent.com/60769071/126873609-dc390d5c-2398-4d03-85d2-b49f8eb51677.png" width = "100%">
