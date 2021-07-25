@@ -9,6 +9,8 @@
 # zipped files containing the matrices generating by Intel VTune Profiler
 - client_analysis.zip
 - server_analysis.zip
+# play around with parameters, exploring federated learning
+- play_around.zip
 ```
 # What I have learned ...
 ### 1. The Concept of Fedreated Learning:
