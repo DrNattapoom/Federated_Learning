@@ -8,6 +8,7 @@ import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from torchvision.datasets import CIFAR10
 
+# define the device allocation
 DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def main():
@@ -35,7 +36,7 @@ def main():
 
     # Load model
     net = Net().to(DEVICE)
-    # Load data (CIFAR-10)
+    # Load data [CIFAR10 - a popular colored image classification dataset for machine learning]
     trainloader, testloader = load_data()
 
     # Flower client
@@ -48,7 +49,7 @@ def main():
         def set_parameters(self, parameters):
             params_dict = zip(net.state_dict().keys(), parameters)
             state_dict = OrderedDict({k: torch.Tensor(v) for k, v in params_dict})
-            net.load_state_dict(state_dict, strict=True)
+            net.load_state_dict(state_dict, strict = True)
 
         # receive the updated local model weights
         def fit(self, parameters, config):
@@ -65,7 +66,7 @@ def main():
             return float(loss), len(testloader), {"accuracy": float(accuracy)}
 
     # Start client
-    fl.client.start_numpy_client("[::]:8080", client=CifarClient())
+    fl.client.start_numpy_client("[::]:8080", client = CifarClient())
 
 def train(net, trainloader, epochs):
     """Train the network on the training set."""
