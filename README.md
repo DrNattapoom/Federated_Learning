@@ -1,5 +1,5 @@
-# Federated Learning
-<b> MUIC ICCS311 Functional and Parallel Programming: Federated Learning Project </b>
+# Federated Learning Project
+<b> MUIC ICCS311 Functional and Parallel Programming
 
 # Repository Files
 ```
