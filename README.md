@@ -96,7 +96,7 @@ Firstly, as suggested by the histogram, more logical CPUs should be utilized, an
 In fact, this has been done by one of my classmates, Mr. Bhumrapee Soonjun. He applies CUDA and runs the algorithm on the GPU. 
 
 ## Federated Learning Comparison: CPU vs GPU
-According to Bhumrapee Soonjun (2021), with the same algorithm running on GPU, the elapsed time of the <code>client.py</code> is roughly 36 seconds. And this is very impressive considering the CPU implementation spent 191.555 seconds, which is approximately 6 times slower. However, like the CPU implementation, his findings also hows that the paralleism of the algorithm is still "low". 
+According to Bhumrapee Soonjun (2021), with the same algorithm running on GPU, the elapsed time of the <code>client.py</code> is roughly 36 seconds. And this is very impressive considering the CPU implementation spent 191.555 seconds, which is approximately 6 times slower. However, like the CPU implementation, his findings also show that the parallelism of the algorithm is still "low". 
 <hr>
 All in all, the process of training the data should be further parallelized and run on GPU; however, it is also very crucial to make sure that we only trigger the GPU kernel when we needed to. By minimizing the number of function calls and data transfers, the algorithm can therefore be potentially faster. 
 
